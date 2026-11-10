@@ -1,0 +1,19 @@
+apiVersion: v2
+name: oxynote
+description: A Helm chart for Oxynote, an open-source technical wiki connected to the systems it describes
+type: application
+version: 0.1.0
+appVersion: "0.10.0"
+kubeVersion: ">=1.29.0-0"
+home: https://github.com/oxynote/oxynote
+sources:
+  - https://github.com/rocattle/charts
+  - https://github.com/oxynote/oxynote
+keywords:
+  - oxynote
+  - wiki
+  - runbook
+  - documentation
+maintainers:
+  - name: rocattle
+    url: https://github.com/rocattle

@@ -142,6 +142,23 @@ securityContext:
 # -- (object) Container resource requests and limits
 resources: {}
 
+# -- (list) In-place resize policy per resource. CPU resizes without a restart. Memory restarts the container, since the Node.js heap and PostgreSQL buffers are sized at startup
+resizePolicy:
+  - resourceName: cpu
+    restartPolicy: NotRequired
+  - resourceName: memory
+    restartPolicy: RestartContainer
+
+podDisruptionBudget:
+  # -- (bool) Create a PodDisruptionBudget. With a single replica, `maxUnavailable: 0` or `minAvailable: 1` blocks node drains until the PDB is removed
+  enabled: false
+  # -- (int or string) Minimum available pods. Takes precedence over `maxUnavailable` when set
+  minAvailable: ""
+  # -- (int or string) Maximum unavailable pods
+  maxUnavailable: 1
+  # -- (string) Eviction policy for unhealthy pods (`IfHealthyBudget` or `AlwaysAllow`). Empty uses the cluster default
+  unhealthyPodEvictionPolicy: ""
+
 # -- (int) Grace period for the ordered shutdown that flushes open documents last
 terminationGracePeriodSeconds: 60
 

@@ -119,6 +119,11 @@ Kubernetes: `>=1.29.0-0`
 | podSecurityContext | object | `{"fsGroup":65532,"fsGroupChangePolicy":"OnRootMismatch","runAsGroup":65532,"runAsNonRoot":true,"runAsUser":65532,"seccompProfile":{"type":"RuntimeDefault"}}` | Pod security context. UID 65532 is fixed by the upstream image. `OnRootMismatch` stops kubelet from adding group write to the PostgreSQL data directory on every mount, which PostgreSQL refuses |
 | securityContext | object | `{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true}` | Container security context. The image writes only to `/oxynote/data` and `/tmp`, so the root filesystem stays read-only |
 | resources | object | `{}` | Container resource requests and limits |
+| resizePolicy | list | `[{"resourceName":"cpu","restartPolicy":"NotRequired"},{"resourceName":"memory","restartPolicy":"RestartContainer"}]` | In-place resize policy per resource. CPU resizes without a restart. Memory restarts the container, since the Node.js heap and PostgreSQL buffers are sized at startup |
+| podDisruptionBudget.enabled | bool | `false` | Create a PodDisruptionBudget. With a single replica, `maxUnavailable: 0` or `minAvailable: 1` blocks node drains until the PDB is removed |
+| podDisruptionBudget.minAvailable | int or string | `""` | Minimum available pods. Takes precedence over `maxUnavailable` when set |
+| podDisruptionBudget.maxUnavailable | int or string | `1` | Maximum unavailable pods |
+| podDisruptionBudget.unhealthyPodEvictionPolicy | string | `""` | Eviction policy for unhealthy pods (`IfHealthyBudget` or `AlwaysAllow`). Empty uses the cluster default |
 | terminationGracePeriodSeconds | int | `60` | Grace period for the ordered shutdown that flushes open documents last |
 | startupProbe | object | `{"failureThreshold":36,"httpGet":{"path":"/auth-realtime/api/auth-config","port":"http"},"periodSeconds":5,"timeoutSeconds":5}` | Startup probe. The upstream image allows 180s before health checks count |
 | livenessProbe | object | `{"exec":{"command":["/usr/bin/node","/oxynote/prod/healthcheck.mjs"]},"failureThreshold":5,"periodSeconds":30,"timeoutSeconds":10}` | Liveness probe. Runs the image's layered health check, which fails when any internal service hangs |

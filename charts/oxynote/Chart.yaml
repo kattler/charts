@@ -4,6 +4,7 @@ description: A Helm chart for Oxynote, an open-source technical wiki connected t
 type: application
 version: 0.1.0
 appVersion: "0.10.0"
+deprecated: false
 kubeVersion: ">=1.29.0-0"
 home: https://github.com/oxynote/oxynote
 sources:

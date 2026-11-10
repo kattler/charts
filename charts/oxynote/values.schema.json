@@ -125,6 +125,28 @@
     "podSecurityContext": { "type": "object" },
     "securityContext": { "type": "object" },
     "resources": { "type": "object" },
+    "resizePolicy": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["resourceName", "restartPolicy"],
+        "properties": {
+          "resourceName": { "type": "string", "enum": ["cpu", "memory"] },
+          "restartPolicy": { "type": "string", "enum": ["NotRequired", "RestartContainer"] }
+        }
+      }
+    },
+    "podDisruptionBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "minAvailable": { "type": ["integer", "string"] },
+        "maxUnavailable": { "type": ["integer", "string"] },
+        "unhealthyPodEvictionPolicy": { "type": "string", "enum": ["", "IfHealthyBudget", "AlwaysAllow"] }
+      }
+    },
     "terminationGracePeriodSeconds": { "type": "integer", "minimum": 0 },
     "startupProbe": { "type": "object" },
     "livenessProbe": { "type": "object" },

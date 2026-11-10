@@ -39,6 +39,18 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 {{- end }}
 
+{{- define "oxynote.image" -}}
+{{- $repository := .Values.image.repository }}
+{{- with .Values.image.registry }}
+{{- $repository = printf "%s/%s" . $repository }}
+{{- end }}
+{{- if .Values.image.digest }}
+{{- printf "%s@%s" $repository .Values.image.digest }}
+{{- else }}
+{{- printf "%s:%s" $repository (.Values.image.tag | default .Chart.AppVersion) }}
+{{- end }}
+{{- end }}
+
 {{- define "oxynote.claimName" -}}
 {{- default (printf "%s-data" (include "oxynote.fullname" .)) .Values.persistence.existingClaim }}
 {{- end }}

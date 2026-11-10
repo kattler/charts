@@ -78,8 +78,10 @@ Kubernetes: `>=1.29.0-0`
 |-----|------|---------|-------------|
 | nameOverride | string | `""` | Override the chart name used in resource names |
 | fullnameOverride | string | `""` | Override the full resource name |
-| image.repository | string | `"ghcr.io/oxynote/oxynote"` | Oxynote image repository. The image is published for linux/amd64 and linux/arm64 |
+| image.registry | string | `"ghcr.io"` | Image registry. Empty renders the repository without a registry prefix |
+| image.repository | string | `"oxynote/oxynote"` | Image repository under the registry. The image is published for linux/amd64 and linux/arm64 |
 | image.tag | string | `""` | Image tag. Defaults to the chart appVersion |
+| image.digest | string | `""` | Image digest, for example `sha256:...`. Takes precedence over `tag` when set |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | imagePullSecrets | list | `[]` | Image pull secrets for private registries or pull-through caches |
 | oxynote.publicUrl | string | `""` | Origin users open in the browser, for example `https://notes.example.com` (sets `OXYNOTE_PUBLIC_URL`). Scheme and host only. Empty keeps the upstream default `http://localhost:8080` |
@@ -101,7 +103,7 @@ Kubernetes: `>=1.29.0-0`
 | service.type | string | `"ClusterIP"` | Service type |
 | service.port | int | `8080` | Service port that forwards to the container port 8080 |
 | service.annotations | object | `{}` | Service annotations |
-| ingress.enabled | bool | `false` | Create an Ingress |
+| ingress.enabled | bool | `false` | Create an Ingress. The Ingress API is frozen, so prefer `httpRoute` for new installs |
 | ingress.className | string | `""` | IngressClass name |
 | ingress.annotations | object | `{}` | Ingress annotations. Allow request bodies of at least 30MB for uploads |
 | ingress.hosts | list | `[{"host":"notes.example.com","paths":[{"path":"/","pathType":"Prefix"}]}]` | Ingress hosts and paths |
@@ -121,6 +123,7 @@ Kubernetes: `>=1.29.0-0`
 | startupProbe | object | `{"failureThreshold":36,"httpGet":{"path":"/auth-realtime/api/auth-config","port":"http"},"periodSeconds":5,"timeoutSeconds":5}` | Startup probe. The upstream image allows 180s before health checks count |
 | livenessProbe | object | `{"exec":{"command":["/usr/bin/node","/oxynote/prod/healthcheck.mjs"]},"failureThreshold":5,"periodSeconds":30,"timeoutSeconds":10}` | Liveness probe. Runs the image's layered health check, which fails when any internal service hangs |
 | readinessProbe | object | `{"failureThreshold":3,"httpGet":{"path":"/auth-realtime/api/auth-config","port":"http"},"periodSeconds":10,"timeoutSeconds":5}` | Readiness probe through the front door |
+| dnsPolicy | string | `"ClusterFirst"` | Pod DNS policy. `None` requires `dnsConfig.nameservers` |
 | dnsConfig | object | `{}` | Pod DNS config |
 | priorityClassName | string | `""` | PriorityClass name |
 | nodeSelector | object | `{}` | Node selector |

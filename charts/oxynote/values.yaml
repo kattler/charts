@@ -4,10 +4,14 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  # -- (string) Oxynote image repository. The image is published for linux/amd64 and linux/arm64
-  repository: ghcr.io/oxynote/oxynote
+  # -- (string) Image registry. Empty renders the repository without a registry prefix
+  registry: ghcr.io
+  # -- (string) Image repository under the registry. The image is published for linux/amd64 and linux/arm64
+  repository: oxynote/oxynote
   # -- (string) Image tag. Defaults to the chart appVersion
   tag: ""
+  # -- (string) Image digest, for example `sha256:...`. Takes precedence over `tag` when set
+  digest: ""
   # -- (string) Image pull policy
   pullPolicy: IfNotPresent
 
@@ -68,7 +72,7 @@ service:
   annotations: {}
 
 ingress:
-  # -- (bool) Create an Ingress
+  # -- (bool) Create an Ingress. The Ingress API is frozen, so prefer `httpRoute` for new installs
   enabled: false
   # -- (string) IngressClass name
   className: ""
@@ -169,6 +173,8 @@ readinessProbe:
   timeoutSeconds: 5
   failureThreshold: 3
 
+# -- (string) Pod DNS policy. `None` requires `dnsConfig.nameservers`
+dnsPolicy: ClusterFirst
 # -- (object) Pod DNS config
 dnsConfig: {}
 # dnsConfig:

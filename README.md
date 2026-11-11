@@ -1,11 +1,11 @@
-# rocattle charts
+# kattler charts
 
 [![Helm](https://img.shields.io/badge/helm-v4.3.1-black?style=flat-square&logo=helm&logoColor=white)](https://helm.sh/)
 [![Kubernetes](https://img.shields.io/badge/kubernetes-%3E%3D1.29-black?style=flat-square&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
-[![Helm Chart](https://img.shields.io/badge/ghcr.io-charts%2Foxynote-black?style=flat-square&logo=helm&logoColor=white)](https://github.com/rocattle/charts/pkgs/container/charts%2Foxynote)
-[![License](https://img.shields.io/github/license/rocattle/charts?style=flat-square&color=black)](https://github.com/rocattle/charts/blob/main/LICENSE)
+[![Helm Chart](https://img.shields.io/badge/ghcr.io-charts%2Foxynote-black?style=flat-square&logo=helm&logoColor=white)](https://github.com/kattler/charts/pkgs/container/charts%2Foxynote)
+[![License](https://img.shields.io/github/license/kattler/charts?style=flat-square&color=black)](https://github.com/kattler/charts/blob/main/LICENSE)
 
-Helm charts maintained by rocattle, distributed as OCI artifacts on `ghcr.io/rocattle/charts`.
+Helm charts maintained by kattler, distributed as OCI artifacts on `ghcr.io/kattler/charts`.
 
 | Chart | Description |
 | --- | --- |
@@ -14,15 +14,15 @@ Helm charts maintained by rocattle, distributed as OCI artifacts on `ghcr.io/roc
 ## Usage
 
 ```console
-crane ls ghcr.io/rocattle/charts/oxynote
-helm install oxynote oci://ghcr.io/rocattle/charts/oxynote --version 0.1.0
+crane ls ghcr.io/kattler/charts/oxynote
+helm install oxynote oci://ghcr.io/kattler/charts/oxynote --version 0.1.0
 ```
 
 `helm search repo` does not work with OCI registries. Use [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) to list versions.
 
 ## Releases
 
-A push to `main` that changes `version` in a `charts/*/Chart.yaml` packages that chart and pushes it to `oci://ghcr.io/rocattle/charts`. A version that is already published is skipped. To re-publish the same version, run the Release workflow manually with `force` enabled.
+A push to `main` that changes `version` in a `charts/*/Chart.yaml` packages that chart and pushes it to `oci://ghcr.io/kattler/charts`. A version that is already published is skipped. To re-publish the same version, run the Release workflow manually with `force` enabled.
 
 ## Development
 

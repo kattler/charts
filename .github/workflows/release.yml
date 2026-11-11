@@ -28,7 +28,7 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  REGISTRY_PATH: ghcr.io/rocattle/charts
+  REGISTRY_PATH: ghcr.io/kattler/charts
 
 jobs:
   release:

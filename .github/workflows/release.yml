@@ -28,7 +28,7 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  REGISTRY_PATH: ghcr.io/kattler/charts
+  REGISTRY_PATH: ghcr.io/${{ github.repository_owner }}/charts
 
 jobs:
   release:

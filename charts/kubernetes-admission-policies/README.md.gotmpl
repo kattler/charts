@@ -1,0 +1,40 @@
+{{ template "chart.header" . }}
+
+{{ template "chart.badgesSection" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "chart.homepageLine" . }}
+
+## Installation
+
+The chart is distributed only as an OCI artifact on ghcr.io, so `helm search repo` does not work. List versions with [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md):
+
+```console
+crane ls ghcr.io/kattler/charts/{{ template "chart.name" . }}
+```
+
+Install:
+
+```console
+helm install {{ template "chart.name" . }} oci://ghcr.io/kattler/charts/{{ template "chart.name" . }} \
+  --version {{ template "chart.version" . }} \
+  -f values.yaml
+```
+
+Inspect the chart before installing:
+
+```console
+helm show values oci://ghcr.io/kattler/charts/{{ template "chart.name" . }} --version {{ template "chart.version" . }}
+```
+
+Upgrade and uninstall:
+
+```console
+helm upgrade {{ template "chart.name" . }} oci://ghcr.io/kattler/charts/{{ template "chart.name" . }} --version {{ template "chart.version" . }} -f values.yaml
+helm uninstall {{ template "chart.name" . }}
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}

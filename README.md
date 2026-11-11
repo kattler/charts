@@ -9,6 +9,7 @@ Helm charts maintained by kattler, distributed as OCI artifacts on `ghcr.io/katt
 
 | Chart | Description |
 | --- | --- |
+| [kubernetes-admission-policies](charts/kubernetes-admission-policies) | Kubernetes-native admission policies using ValidatingAdmissionPolicy and MutatingAdmissionPolicy with their policy bindings |
 | [oxynote](charts/oxynote) | Oxynote, an open-source technical wiki connected to the systems it describes |
 
 ## Usage

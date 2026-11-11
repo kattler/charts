@@ -1,0 +1,26 @@
+apiVersion: v2
+name: kubernetes-admission-policies
+description: Kubernetes-native admission policies using ValidatingAdmissionPolicy and MutatingAdmissionPolicy with their policy bindings
+type: application
+version: 0.2.0
+kubeVersion: ">=1.30.0-0"
+home: https://github.com/kattler/charts
+sources:
+  - https://github.com/kattler/charts
+  - https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/
+  - https://kubernetes.io/docs/reference/access-authn-authz/mutating-admission-policy/
+maintainers:
+  - name: kattler
+    url: https://github.com/kattler
+deprecated: false
+keywords:
+  - kubernetes
+  - admission
+  - policy
+  - validating
+  - mutating
+  - cel
+  - security
+  - governance
+annotations:
+  "helm.sh/skip-test": "false"

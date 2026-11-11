@@ -6,20 +6,20 @@ A Helm chart for Oxynote, an open-source technical wiki connected to the systems
 
 **Homepage:** <https://github.com/oxynote/oxynote>
 
-This chart is maintained by rocattle and is not an official Oxynote project. The upstream image reference lives in [docker/prod/README.md](https://github.com/oxynote/oxynote/blob/main/docker/prod/README.md).
+This chart is maintained by kattler and is not an official Oxynote project. The upstream image reference lives in [docker/prod/README.md](https://github.com/oxynote/oxynote/blob/main/docker/prod/README.md).
 
 ## Installation
 
 The chart is distributed only as an OCI artifact on ghcr.io, so `helm search repo` does not work. List versions with [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md):
 
 ```console
-crane ls ghcr.io/rocattle/charts/oxynote
+crane ls ghcr.io/kattler/charts/oxynote
 ```
 
 Install:
 
 ```console
-helm install oxynote oci://ghcr.io/rocattle/charts/oxynote \
+helm install oxynote oci://ghcr.io/kattler/charts/oxynote \
   --version 0.1.0 \
   --namespace oxynote --create-namespace \
   --set oxynote.publicUrl=https://notes.example.com
@@ -28,7 +28,7 @@ helm install oxynote oci://ghcr.io/rocattle/charts/oxynote \
 Inspect the chart before installing:
 
 ```console
-helm show values oci://ghcr.io/rocattle/charts/oxynote --version 0.1.0
+helm show values oci://ghcr.io/kattler/charts/oxynote --version 0.1.0
 ```
 
 ## Design notes

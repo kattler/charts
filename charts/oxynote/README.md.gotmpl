@@ -6,20 +6,20 @@
 
 {{ template "chart.homepageLine" . }}
 
-This chart is maintained by rocattle and is not an official Oxynote project. The upstream image reference lives in [docker/prod/README.md](https://github.com/oxynote/oxynote/blob/main/docker/prod/README.md).
+This chart is maintained by kattler and is not an official Oxynote project. The upstream image reference lives in [docker/prod/README.md](https://github.com/oxynote/oxynote/blob/main/docker/prod/README.md).
 
 ## Installation
 
 The chart is distributed only as an OCI artifact on ghcr.io, so `helm search repo` does not work. List versions with [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md):
 
 ```console
-crane ls ghcr.io/rocattle/charts/{{ template "chart.name" . }}
+crane ls ghcr.io/kattler/charts/{{ template "chart.name" . }}
 ```
 
 Install:
 
 ```console
-helm install {{ template "chart.name" . }} oci://ghcr.io/rocattle/charts/{{ template "chart.name" . }} \
+helm install {{ template "chart.name" . }} oci://ghcr.io/kattler/charts/{{ template "chart.name" . }} \
   --version {{ template "chart.version" . }} \
   --namespace {{ template "chart.name" . }} --create-namespace \
   --set oxynote.publicUrl=https://notes.example.com
@@ -28,7 +28,7 @@ helm install {{ template "chart.name" . }} oci://ghcr.io/rocattle/charts/{{ temp
 Inspect the chart before installing:
 
 ```console
-helm show values oci://ghcr.io/rocattle/charts/{{ template "chart.name" . }} --version {{ template "chart.version" . }}
+helm show values oci://ghcr.io/kattler/charts/{{ template "chart.name" . }} --version {{ template "chart.version" . }}
 ```
 
 ## Design notes

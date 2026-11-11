@@ -8,7 +8,7 @@ deprecated: false
 kubeVersion: ">=1.29.0-0"
 home: https://github.com/oxynote/oxynote
 sources:
-  - https://github.com/rocattle/charts
+  - https://github.com/kattler/charts
   - https://github.com/oxynote/oxynote
 keywords:
   - oxynote
@@ -16,5 +16,5 @@ keywords:
   - runbook
   - documentation
 maintainers:
-  - name: rocattle
-    url: https://github.com/rocattle
+  - name: kattler
+    url: https://github.com/kattler

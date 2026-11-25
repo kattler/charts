@@ -1,8 +1,8 @@
 # kattler charts
 
 [![Helm](https://img.shields.io/badge/helm-v4.3.1-black?style=flat-square&logo=helm&logoColor=white)](https://helm.sh/)
-[![Kubernetes](https://img.shields.io/badge/kubernetes-%3E%3D1.29-black?style=flat-square&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
-[![Helm Chart](https://img.shields.io/badge/ghcr.io-charts%2Foxynote-black?style=flat-square&logo=helm&logoColor=white)](https://github.com/kattler/charts/pkgs/container/charts%2Foxynote)
+[![Kubernetes](https://img.shields.io/badge/kubernetes-%3E%3D1.30-black?style=flat-square&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+[![Helm Chart](https://img.shields.io/badge/ghcr.io-charts%2Fkubernetes--admission--policies-black?style=flat-square&logo=helm&logoColor=white)](https://github.com/kattler/charts/pkgs/container/charts%2Fkubernetes-admission-policies)
 [![License](https://img.shields.io/github/license/kattler/charts?style=flat-square&color=black)](https://github.com/kattler/charts/blob/main/LICENSE)
 
 Helm charts maintained by kattler, distributed as OCI artifacts on `ghcr.io/kattler/charts`.
@@ -10,13 +10,12 @@ Helm charts maintained by kattler, distributed as OCI artifacts on `ghcr.io/katt
 | Chart | Description |
 | --- | --- |
 | [kubernetes-admission-policies](charts/kubernetes-admission-policies) | Kubernetes-native admission policies using ValidatingAdmissionPolicy and MutatingAdmissionPolicy with their policy bindings |
-| [oxynote](charts/oxynote) | Oxynote, an open-source technical wiki connected to the systems it describes |
 
 ## Usage
 
 ```console
-crane ls ghcr.io/kattler/charts/oxynote
-helm install oxynote oci://ghcr.io/kattler/charts/oxynote --version 0.1.0
+crane ls ghcr.io/kattler/charts/kubernetes-admission-policies
+helm install kubernetes-admission-policies oci://ghcr.io/kattler/charts/kubernetes-admission-policies --version 0.2.0
 ```
 
 `helm search repo` does not work with OCI registries. Use [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) to list versions.
